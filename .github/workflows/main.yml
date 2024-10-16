@@ -1,0 +1,48 @@
+name: "Build and deploy to server"
+
+on:
+  push:
+    branches:
+      - release
+  pull_request:
+    branches:
+      - release
+
+jobs:
+  deploy:
+    name: Deploy to server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the Next.js app
+        run: npm run build
+
+    #   - name: Deploy to EC2
+    #     env:
+    #       EC2_HOST: ${{ secrets.EC2_HOST }}
+    #       EC2_USER: ${{ secrets.EC2_USER }}
+    #       EC2_KEY: ${{ secrets.EC2_KEY }}
+    #     run: |
+    #       echo "${EC2_KEY}" | tr -d '\r' > ec2_key.pem
+    #       chmod 400 ec2_key.pem
+    #       ssh -o "StrictHostKeyChecking=no" -i ec2_key.pem $EC2_USER@$EC2_HOST << 'EOF'
+    #         pwd
+    #         if [ ! -d "nrc-hackathon-fe" ]; then
+    #           git clone git@github.com:tungcbh/nrc-hackathon-fe.git
+    #         fi
+    #         cd nrc-hackathon-fe
+    #         git pull origin main
+    #         npm run build
+    #         nohup npm start &
+    #       EOF
