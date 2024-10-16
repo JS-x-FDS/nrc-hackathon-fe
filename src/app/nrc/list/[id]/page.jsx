@@ -48,7 +48,7 @@ const Detail = ({ params }) => {
 
     try {
       const response = await axios.post(
-        "http://44.194.247.50:8080/api/v1/upload",
+        "http://44.194.247.50:8080/api/v1/uploadFile",
         formData,
         {
           headers: {
