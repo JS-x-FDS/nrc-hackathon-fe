@@ -32,7 +32,7 @@ export default function Home() {
             <Image
               alt="Layer1"
               src={layer1}
-              className="object-cover scale-x-105 h-full"
+              className="object-cover scale-x-105 h-full lg:block hidden"
               ref={ref}
             />
           </MouseParallaxChild>
@@ -40,7 +40,7 @@ export default function Home() {
           <MouseParallaxChild
             factorX={0.5}
             factorY={0.3}
-            className="hidden lg:block absolute"
+            className="lg:block absolute"
           >
             <Image alt="Layer2" src={layer2} className="object-cover" />
           </MouseParallaxChild>
@@ -48,7 +48,7 @@ export default function Home() {
           <MouseParallaxChild
             factorX={0.2}
             factorY={0.4}
-            className="absolute lg:-bottom-16 2xl:bottom-0"
+            className="absolute 2xl:bottom-0"
           >
             <Image alt="Layer3" src={layer3} className="scale-x-105" />
           </MouseParallaxChild>
@@ -59,6 +59,7 @@ export default function Home() {
           >
             <Image alt="Layer4" src={layer4} className="scale-x-100" />
           </MouseParallaxChild>
+
           <MouseParallaxChild
             factorX={0.2}
             factorY={0.1}
@@ -67,7 +68,7 @@ export default function Home() {
             <Image alt="teamName" src={teamName} className="scale-x-105" />
           </MouseParallaxChild>
           <Button
-            className="absolute bottom-[40%] right-[15%] h-20 w-[15%] uppercase font-medium text-lg animate-bounce"
+            className="absolute bottom-[40%] right-[15%] h-16 w-[15%] uppercase font-medium text-lg animate-bounce"
             href="/login"
           >
             Get started
@@ -87,6 +88,48 @@ export default function Home() {
             </svg>
           </Button>
         </MouseParallaxContainer>
+      </div>
+      <div className="lg:hidden w-full h-full">
+        <div className="relative h-full">
+          <Image
+            src={layer2}
+            alt="Layer2"
+            className="absolute object-cover bottom-0 h-[50%] object-left"
+          />
+          <Image
+            alt="Layer3"
+            src={layer3}
+            className="absolute bottom-0 object-cover h-[50%] object-left"
+          />
+          <Image
+            alt="Layer4"
+            src={layer4}
+            className="absolute bottom-[5%] object-cover h-[50%] object-left"
+          />
+          <div className="absolute flex flex-col justify-center items-center">
+            <Image alt="teamName" src={teamName} />
+            <Button
+              className="absolute h-12 w-auto uppercase font-medium text-md left-10 top-10 animate-bounce"
+              href="/login"
+            >
+              Get started
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+                />
+              </svg>
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );
