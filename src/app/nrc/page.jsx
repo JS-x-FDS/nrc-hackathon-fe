@@ -2,6 +2,7 @@
 import React from "react";
 import { InboxOutlined } from "@ant-design/icons";
 import { message, Upload } from "antd";
+import AppLayout from "../components/layout";
 const { Dragger } = Upload;
 
 const props = {
@@ -26,7 +27,7 @@ const props = {
 
 const NRC = () => {
   return (
-    <div>
+    <AppLayout>
       <Dragger {...props}>
         <p className="ant-upload-drag-icon">
           <InboxOutlined />
@@ -39,7 +40,7 @@ const NRC = () => {
           uploading company data or other banned files.
         </p>
       </Dragger>
-    </div>
+    </AppLayout>
   );
 };
 

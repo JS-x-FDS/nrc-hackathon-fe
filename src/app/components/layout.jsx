@@ -1,15 +1,18 @@
 "use client";
 import { Breadcrumb, Layout, Menu } from "antd";
+import Link from "next/link";
 const { Header, Content, Footer } = Layout;
 
 const items = [
   {
     key: "new",
     label: "New Item",
+    link: "/nrc",
   },
   {
     key: "list",
     label: "List Items",
+    link: "/nrc/list",
   },
 ];
 const AppLayout = ({ children }) => {
@@ -28,16 +31,13 @@ const AppLayout = ({ children }) => {
         }}
       >
         <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={items}
-          style={{
-            flex: 1,
-            minWidth: 0,
-          }}
-        />
+        <div className="space-x-4">
+          {items.map((item, i) => (
+            <Link key={i} href={item.link} className="text-white">
+              {item.label}
+            </Link>
+          ))}
+        </div>
       </Header>
       <Content
         style={{
