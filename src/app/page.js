@@ -88,28 +88,6 @@ export default function Home() {
           </Button>
         </MouseParallaxContainer>
       </div>
-      <div className="lg:hidden fixed w-full h-full">
-        <div className="relative h-full">
-          <img
-            src="/images/hero/sky.webp"
-            className="absolute object-cover h-full"
-          />
-          <img
-            src="/images/hero/ground.webp"
-            className="w-full absolute bottom-0"
-          />
-          <img
-            src="/images/hero/btc.webp"
-            className="absolute left-1/2 -translate-x-1/2 top-6 px-4"
-          />
-          <div className="absolute top-28 left-1/2 -translate-x-1/2 flex flex-col gap-12 items-center">
-            <h1 className="roti-font text-6xl drop-shadow-[6px_6px_rgb(16,51,62)] title-stroke">
-              <span className="text-[rgb(255,90,82)]">CODE</span>
-              <span className="text-[rgb(255,185,0)]">FEST</span>
-            </h1>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
