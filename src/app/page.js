@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import layer1 from "./images/layer1.png";
 import layer2 from "./images/layer2.png";
 import layer3 from "./images/layer3.png";
@@ -14,7 +15,6 @@ import React from "react";
 import { Button } from "antd";
 export default function Home() {
   const { ref, height } = useElementSize();
-
   return (
     <div className="h-screen bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <div
@@ -108,11 +108,8 @@ export default function Home() {
           />
           <div className="absolute flex flex-col justify-center items-center">
             <Image alt="teamName" src={teamName} />
-            <Button
-              className="absolute h-12 w-auto uppercase font-medium text-md left-10 top-10 animate-bounce"
-              href="/login"
-            >
-              Get started
+            <Button className="absolute h-12 w-auto uppercase font-medium text-md left-10 top-10 animate-bounce">
+              <Link href="/login">Get started</Link>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
