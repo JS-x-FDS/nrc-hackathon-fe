@@ -46,6 +46,7 @@ jobs:
             git fetch origin
             git checkout release
             git reset --hard origin/release
+            npm install
             npm run build
             sudo systemctl restart nrc-hackathon-fe
           EOF
