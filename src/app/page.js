@@ -69,7 +69,7 @@ export default function Home() {
           </MouseParallaxChild>
           <Button
             className="absolute bottom-[40%] right-[15%] h-16 w-[15%] uppercase font-medium text-lg animate-bounce"
-            href="/login"
+            href="/nrc"
           >
             Get started
             <svg
@@ -109,7 +109,7 @@ export default function Home() {
           <div className="absolute flex flex-col justify-center items-center">
             <Image alt="teamName" src={teamName} />
             <Button className="absolute h-12 w-auto uppercase font-medium text-md left-10 top-10 animate-bounce">
-              <Link href="/login">Get started</Link>
+              <Link href="/nrc">Get started</Link>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
