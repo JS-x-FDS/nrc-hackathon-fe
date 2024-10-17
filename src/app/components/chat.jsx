@@ -1,4 +1,5 @@
 import { ask } from "@/lib/geminiService";
+import { sendMessage } from "@/lib/jdsService";
 import { SendOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
 import React, { useState } from "react";
@@ -8,8 +9,7 @@ const Chat = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([
     {
-      message:
-        "Hello, I'm NRC chat bot! How can I help you! Hello, I'm NRC chat bot! How can I help you",
+      message: "Hello, I'm NRC chat bot! How can I help you!",
       sender: "bot",
     },
     {
@@ -18,7 +18,7 @@ const Chat = () => {
     },
   ]);
   return (
-    <div className="h-full w-full flex flex-col justify-between">
+    <div className=" h-full w-full flex flex-col justify-between bg-white">
       <div className="space-y-2">
         {messages.map((m, i) => (
           <div
@@ -37,7 +37,7 @@ const Chat = () => {
           </div>
         ))}
       </div>
-      <div className="flex space-x-3 overflow-hidden">
+      <div className="relative bottom-0 right-0 left-0 flex space-x-3 overflow-hidden">
         <Input
           value={message}
           onChange={(e) => {
@@ -56,7 +56,7 @@ const Chat = () => {
                 sender: "user",
               },
             ]);
-            const aws = await ask(message);
+            const aws = await sendMessage(message).then((res) => res.response);
             setMessage("");
             setMessages((pre) => [
               ...pre,

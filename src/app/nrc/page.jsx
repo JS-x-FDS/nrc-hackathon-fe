@@ -1,47 +1,11 @@
-"use client";
-import React from "react";
-import { InboxOutlined } from "@ant-design/icons";
-import { message, Upload } from "antd";
-import AppLayout from "../components/layout";
-const { Dragger } = Upload;
+import Detail from "@/app/components/jds-template";
+import { auth } from "@/auth";
+import Login from "@/app/login/page";
 
-const props = {
-  name: "file",
-  multiple: true,
-  action: "https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload",
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== "uploading") {
-      console.log(info.file, info.fileList);
-    }
-    if (status === "done") {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e) {
-    console.log("Dropped files", e.dataTransfer.files);
-  },
+const Page = async () => {
+  const session = await auth();
+  if (!session) return <Login />;
+  return <Detail />;
 };
 
-const NRC = () => {
-  return (
-    <AppLayout>
-      <Dragger {...props}>
-        <p className="ant-upload-drag-icon">
-          <InboxOutlined />
-        </p>
-        <p className="ant-upload-text">
-          Click or drag file to this area to upload
-        </p>
-        <p className="ant-upload-hint">
-          Support for a single or bulk upload. Strictly prohibited from
-          uploading company data or other banned files.
-        </p>
-      </Dragger>
-    </AppLayout>
-  );
-};
-
-export default NRC;
+export default Page;
