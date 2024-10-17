@@ -4,6 +4,11 @@ import { Splitter, Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import Chat from "@/app/components/chat";
 import Papa from "papaparse";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 const { Dragger } = Upload;
 const Desc = ({ children }) => (
@@ -51,19 +56,17 @@ const Detail = ({ params, auth }) => {
         height: "100%",
       }}
     >
-      <Splitter
-        onResize={setSizes}
-        style={{
-          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-        }}
-        className=""
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="relative min-h-[200px] w-full rounded-lg border md:min-w-[450px]"
       >
-        <Splitter.Panel size={sizes[0]} resizable={enabled}>
+        <ResizablePanel>
           <Desc>
             <Chat />
           </Desc>
-        </Splitter.Panel>
-        <Splitter.Panel size={sizes[1]}>
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel>
           <Desc>
             <div>
               <Dragger {...props} className="">
@@ -106,8 +109,8 @@ const Detail = ({ params, auth }) => {
               )}
             </div>
           </Desc>
-        </Splitter.Panel>
-      </Splitter>
+        </ResizablePanel>
+      </ResizablePanelGroup>
     </div>
   );
 };

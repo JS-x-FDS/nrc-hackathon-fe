@@ -18,8 +18,8 @@ const Chat = () => {
     },
   ]);
   return (
-    <div className=" h-full w-full flex flex-col justify-between bg-white">
-      <div className="space-y-2">
+    <div className=" h-full w-full flex flex-col justify-between bg-white overflow-y-auto">
+      <div className="space-y-2 pb-10">
         {messages.map((m, i) => (
           <div
             key={i}
@@ -37,7 +37,7 @@ const Chat = () => {
           </div>
         ))}
       </div>
-      <div className="relative bottom-0 right-0 left-0 flex space-x-3 overflow-hidden">
+      <div className="absolute bottom-5 right-5 left-5 flex space-x-3 overflow-hidden">
         <Input
           value={message}
           onChange={(e) => {
